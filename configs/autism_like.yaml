@@ -1,0 +1,54 @@
+name: autism_like
+description: Autism-like processing configuration
+model:
+  input_size: 64
+  output_size: 4
+  layer_configs:
+  - base_population_size: 32
+    neuron_pool_size: 64
+    output_size: 16
+    initial_budget: 50.0
+    budget_decay_rate: 0.01
+    recruitment_threshold: 0.12
+    population_activation: relu
+    recurrent_strength: 0.2
+    inhibition_strength: 0.08
+    adaptation_rate: 0.005
+    noise_level: 0.0
+  global_budget_decay: 0.0
+  inter_layer_connections: false
+  use_global_feedback: false
+  output_activation: none
+training:
+  learning_rate: 0.0005
+  batch_size: 32
+  num_epochs: 120
+  optimizer: adam
+  weight_decay: 0.0001
+  recruitment_loss_weight: 0.2
+  flexibility_loss_weight: 0.02
+  connectivity_loss_weight: 0.05
+  budget_regularization: 0.01
+  budget_decay_schedule: linear
+  recruitment_warmup_epochs: 10
+  flexibility_ramp_epochs: 20
+  early_stopping: true
+  patience: 10
+  min_delta: 0.001
+dataset_type: autism_modeling
+data_params:
+  condition: autism
+  processing_style: local
+  pattern_completion_bias: 0.3
+  sensory_processing_difference: 0.3
+  num_samples: 1000
+track_connectivity: true
+track_flexibility: true
+analysis_frequency: 10
+autism_modeling: true
+baseline_comparison: true
+baseline_models:
+- mlp
+save_results: true
+output_dir: results/autism
+plot_results: true

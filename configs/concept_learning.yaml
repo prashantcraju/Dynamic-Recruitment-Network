@@ -1,0 +1,65 @@
+name: concept_learning
+description: Configuration optimized for concept learning experiments
+model:
+  input_size: 64
+  output_size: 8
+  layer_configs:
+  - base_population_size: 32
+    neuron_pool_size: 64
+    output_size: 16
+    initial_budget: 50.0
+    budget_decay_rate: 0.01
+    recruitment_threshold: 0.05
+    population_activation: relu
+    recurrent_strength: 0.1
+    inhibition_strength: 0.05
+    adaptation_rate: 0.02
+    noise_level: 0.0
+  - base_population_size: 16
+    neuron_pool_size: 32
+    output_size: 8
+    initial_budget: 50.0
+    budget_decay_rate: 0.01
+    recruitment_threshold: 0.1
+    population_activation: relu
+    recurrent_strength: 0.1
+    inhibition_strength: 0.05
+    adaptation_rate: 0.01
+    noise_level: 0.0
+  global_budget_decay: 0.0
+  inter_layer_connections: true
+  use_global_feedback: true
+  output_activation: none
+training:
+  learning_rate: 0.0005
+  batch_size: 32
+  num_epochs: 150
+  optimizer: adam
+  weight_decay: 0.0001
+  recruitment_loss_weight: 0.15
+  flexibility_loss_weight: 0.1
+  connectivity_loss_weight: 0.02
+  budget_regularization: 0.01
+  budget_decay_schedule: linear
+  recruitment_warmup_epochs: 10
+  flexibility_ramp_epochs: 20
+  early_stopping: true
+  patience: 15
+  min_delta: 0.001
+dataset_type: concept_learning
+data_params:
+  num_concepts: 8
+  concept_complexity: medium
+  hierarchical: true
+  samples_per_concept: 200
+track_connectivity: true
+track_flexibility: true
+analysis_frequency: 5
+autism_modeling: false
+baseline_comparison: true
+baseline_models:
+- mlp
+- transformer
+save_results: true
+output_dir: results/concept_learning
+plot_results: true
