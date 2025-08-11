@@ -1,6 +1,6 @@
 # Dynamic Recruitment Networks (DRN)
 
-This repository contains the code, configurations, and evaluation framework for our ICLR 2026 submission:
+This repository contains the code, configurations, and evaluation framework:
 
 > **When Biology Meets Deep Learning: An Empirical Analysis of Population-Based Neural Architectures**  
 > [Anonymous Authors – under double-blind review]
